@@ -20,18 +20,17 @@ body {
 	font-size: 15px;
 	background-color: var(--Very-Light-Gray);
 }
-span {
-	font-weight: 200;
-	font-size: 1.5rem;
-}
 
 h1 {
 	font-size: 1.5rem;
 	margin-bottom: 1rem;
+	font-weight: 200;
+}
+span {
+	font-weight: 900;
 }
 h1,
 h2 {
-	font-weight: 900;
 	color: var(--Very-Dark-Blue);
 }
 p {
@@ -66,6 +65,7 @@ section::after {
 	-o-transition: width 1s 1s;
 	transition: width 1s 1s;
 }
+
 section:first-child::after {
 	background-color: var(--Cyan);
 }
@@ -109,6 +109,7 @@ section:last-child::after {
 	-ms-flex-pack: center;
 	justify-content: center;
 }
+
 .py-1 {
 	padding: 2rem 0 1rem 0;
 }
@@ -136,7 +137,7 @@ p,
 span,
 img,
 section,
-footer p{
+footer p {
 	opacity: 0;
 }
 
@@ -178,9 +179,10 @@ section img.visible {
 section.visible::after {
 	width: 100%;
 }
-footer p.visible{
+footer p.visible {
 	opacity: 1;
-	animation:  visible .5s linear;
+	-webkit-animation: visible 0.5s linear;
+	animation: visible 0.5s linear;
 }
 @-webkit-keyframes visible {
 	0%,
@@ -205,39 +207,43 @@ footer p.visible{
 	h1,
 	span {
 		font-size: 3rem;
-	}
-	h1 {
-		-webkit-transform: translateY(-1.5rem);
-		-ms-transform: translateY(-1.5rem);
-		transform: translateY(-1.5rem);
 		margin: 0;
+	}
+	h1 span {
+		display: inline-block;
+		-webkit-transform: translateY(-1rem);
+		-ms-transform: translateY(-1rem);
+		transform: translateY(-1rem);
 	}
 	p {
 		max-width: 35rem;
 		margin: 0 auto;
 	}
-	.col-3-lg {
+	header {
+		margin-bottom: 3rem;
+	}
+	.d-grid {
+		-ms-grid-columns: 1fr 0 1fr 0 1fr;
 		grid-template-columns: repeat(3, 1fr);
+		-ms-grid-rows: 1fr 1rem 1fr;
+		grid-template-rows: repeat(2, 1fr);
+		grid-template-areas:
+			"supervisor  builder calculator"
+			"supervisor karma calculator";
+		gap: 1rem 0;
 	}
 	section:first-child {
 		margin-top: 0rem;
-		-ms-grid-row: 2;
-		-ms-grid-row-span: 2;
-		grid-row: 2/4;
+		grid-area: supervisor;
 	}
 	section:nth-child(2) {
-		-ms-grid-row: 2;
-		-ms-grid-row-span: 1;
-		grid-row: 2/3;
+		grid-area: builder;
 	}
 	section:nth-child(3) {
-		-ms-grid-row: 3;
-		grid-row: 3;
+		grid-area: karma;
 	}
 	section:last-child {
-		-ms-grid-row: 2;
-		-ms-grid-row-span: 2;
-		grid-row: 2 / 4;
+		grid-area: calculator;
 	}
 	section {
 		-ms-flex-item-align: center;
